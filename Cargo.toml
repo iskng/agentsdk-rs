@@ -1,0 +1,100 @@
+[package]
+name = "agents-sdk"
+version = "0.1.0"
+edition = "2021"
+description = "A Rust implementation of the OpenAI Agents SDK"
+license = "MIT"
+repository = "https://github.com/yourusername/agents-sdk-rust"
+readme = "README.md"
+keywords = ["openai", "ai", "agent", "llm", "sdk"]
+categories = ["api-bindings", "asynchronous"]
+
+[dependencies]
+# Async runtime
+tokio = { version = "1.35.1", features = ["full"] }
+futures = "0.3.30"
+async-trait = "0.1.77"
+
+# OpenAI API client
+async-openai = "0.28.0"
+
+# Serialization/deserialization
+serde = { version = "1.0.193", features = ["derive"] }
+serde_json = "1.0.108"
+serde_with = "3.4.0"
+
+# Error handling
+thiserror = "1.0.56"
+anyhow = "1.0.79"
+
+# Utilities
+uuid = { version = "1.6.1", features = ["v4", "serde"] }
+chrono = { version = "0.4.31", features = ["serde"] }
+url = "2.5.0"
+once_cell = "1.19.0"
+regex = "1.10.2"
+bytes = "1.5.0"
+dotenv = "0.15.0"
+
+# Logging and tracing
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+
+# HTTP client
+reqwest = { version = "0.11.23", features = ["json"] }
+
+# Type reflection and schema generation 
+typetag = "0.2.14"
+inventory = "0.3.15"
+syn = { version = "2.0.43", features = ["full", "extra-traits"] }
+quote = "1.0.35"
+proc-macro2 = "1.0.76"
+
+[dev-dependencies]
+tokio-test = "0.4.3"
+mockall = "0.12.1"
+wiremock = "0.5.22"
+tempfile = "3.8.1"
+pretty_assertions = "1.4.0"
+
+[features]
+default = ["openai"]
+openai = []
+tracing = []
+voice = []
+
+[[example]]
+name = "hello_world"
+path = "examples/basic/hello_world.rs"
+
+[[example]]
+name = "tools"
+path = "examples/basic/tools.rs"
+
+[[example]]
+name = "context_tool"
+path = "examples/basic/context_tool.rs"
+
+[[example]]
+name = "multiple_tools"
+path = "examples/basic/multiple_tools.rs"
+
+[[example]]
+name = "guardrails"
+path = "examples/basic/guardrails.rs"
+
+[[example]]
+name = "simple_handoff"
+path = "examples/handoffs/simple_handoff.rs"
+
+[[example]]
+name = "agents_as_tools"
+path = "examples/agent_patterns/agents_as_tools.rs"
+
+[[example]]
+name = "message_filter"
+path = "examples/handoffs/message_filter.rs"
+
+[[example]]
+name = "tools_simple"
+path = "examples/basic/tools_simple.rs"
